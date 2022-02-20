@@ -1,0 +1,17 @@
+.f-orm-control:focus {
+    box-shadow: none!important;
+    border-color: transparent!important;
+    outline: none!important;
+    border-radius: 1rem;
+    background-color: rgba(223, 223, 223, 0.493);
+  }
+  
+.f-input-div {padding: 0 5rem 0 0;}
+    .f-input {border: 1px solid #ccc; border-radius:0; border-left: none; border-right: none; border-top: none;}
+    .f-select {border: none;}
+    .map {flex: 1; padding: 10px;}
+    .box_contatti:first-child {
+    border-right: 1px dotted; /*bordino a metà tra le sezioni form e map*/
+}@media screen and (max-width: 678px) { /*codici esclusivi per mobile con schermi max 678px*/.box_contatti:first-child {
+        border-right: 0; /*eliminiamo il bordino dotted che divide form da map su desktop*/
+    }}

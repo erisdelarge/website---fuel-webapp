@@ -1,0 +1,45 @@
+<?php
+include "config.php";
+$id = $_SESSION['id'];
+// echo $id;
+
+include "format_date.php";
+// include "format_price.php";
+
+include "connectDatabase.php";
+$allReportList="";  
+  $sql = "SELECT * FROM reports";
+  $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
+        
+            $position = $row["id_position"];
+            $agency = $row["id_agency"];
+            $user = $row["id_user"];
+            $date = formatDate($row["date"]);
+            $time = $row["time"];
+            $report = $row["report"];
+
+        $sql= "SELECT * FROM agencies";
+        $result = mysqli_query($conn, $sql);
+        if ($result->num_rows > 0) {
+        $mrow = mysqli_fetch_assoc($result);
+        if ($mrow['business'] === $agency) {
+            $myagency= $mrow['id'];
+            echo $myagency;
+            
+            
+
+        };
+        }else {
+            echo "0 results";
+            }
+
+        $allReportList.='<tr><td>'.$date."</td><td>".$time.'</td><td>'.$report.'</td><td>'.$position.'</td><td>'.$myagency.'</td><td>'.$user.'</td></tr>';
+
+   
+
+
+
+  
+    $conn->close();
+    ?>
